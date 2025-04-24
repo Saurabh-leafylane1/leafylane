@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Plant Cards</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background-color: #f5f5f5;
+    }
+
+    .card-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      overflow: hidden;
+      transition: transform 0.3s;
+    }
+
+    .card:hover {
+      transform: scale(1.03);
+    }
+
+    .card img {
+      width: 100%;
+      object-fit: cover;
+    }
+
+    .card-content {
+      padding: 15px;
+      text-align: center;
+    }
+
+    .card-content h3 {
+      margin: 10px 0;
+      font-size: 18px;
+      color: #2e7d32;
+    }
+
+    .card-content button {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      padding: 10px 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    .card-content button:hover {
+      background-color: #388e3c;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>🪴 Our Featured Plants</h2>
+
+  <div class="card-container">
+
+    <div class="card">
+      <img src="https://tse3.mm.bing.net/th/id/OIP.CeswSvl85TMznMi-yFAPKgHaHa?rs=1&pid=ImgDetMain" alt="Snake Plant">
+      <div class="card-content">
+        <h3>Snake Plant</h3>
+        <button>Buy Now</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="https://tse3.mm.bing.net/th/id/OIP.aouZFhMZxyCd9C3ATj7_WQHaHa?rs=1&pid=ImgDetMain" alt="Peace Lily">
+      <div class="card-content">
+        <h3>Peace Lily</h3>
+        <button>Buy Now</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="https://tse3.mm.bing.net/th/id/OIP.H6aALWNDdtfPwVt4z3yGmAHaEK?rs=1&pid=ImgDetMain" alt="Money Plant">
+      <div class="card-content">
+        <h3>Money Plant</h3>
+        <button>Buy Now</button>
+      </div>
+    </div>
+
+  </div>
+
+</body>
+</html>

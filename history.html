@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>LeafyLane - Order History</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f0f9f0;
+    }
+
+    /* Order History Section */
+    .order-history {
+      background-color: #fff;
+      padding: 20px;
+      margin: 80px auto 100px auto;
+      max-width: 600px;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+
+    .order-history h2 {
+      font-size: 1.6em;
+      color: #2d572c;
+      margin-bottom: 10px;
+    }
+
+    #orderList {
+      list-style: none;
+      padding: 0;
+    }
+
+    #orderList li {
+      background: #e9ffe9;
+      padding: 12px;
+      margin: 10px 0;
+      border-left: 5px solid #4caf50;
+      border-radius: 6px;
+    }
+
+    .order-history button {
+      margin-top: 15px;
+      background-color: #e53935;
+      color: white;
+      padding: 10px 16px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    /* Bottom Fixed Navbar */
+    .bottom-nav {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 60px;
+      background-color: #4caf50;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      box-shadow: 0 -1px 6px rgba(0, 0, 0, 0.2);
+      z-index: 999;
+    }
+
+    .bottom-nav a {
+      color: white;
+      text-decoration: none;
+      font-size: 1.1em;
+      text-align: center;
+    }
+
+    .bottom-nav a span {
+      display: block;
+      font-size: 0.8em;
+    }
+
+    .bottom-nav a:hover {
+      color: #d0ffd0;
+    }
+
+    .cart-count {
+      background: red;
+      color: white;
+      font-size: 12px;
+      padding: 2px 6px;
+      border-radius: 50%;
+      position: absolute;
+      top: 5px;
+      right: 15px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Order History Section -->
+  <section class="order-history" id="orderHistory">
+    <h2>Your Order History</h2>
+    <ul id="orderList"></ul>
+    <button onclick="clearOrderHistory()">Clear History</button>
+  </section>
+
+  <!-- Bottom Mobile Nav -->
+  <nav class="bottom-nav">
+    <a href="#home">
+      🏠
+      <span>Home</span>
+    </a>
+    <a href="#orderHistory">
+      📜
+      <span>History</span>
+    </a>
+    <a href="#cart">
+      🛒
+      <span>Cart</span>
+    </a>
+  </nav>
+
+  <script>
+    // Save order to history
+    function saveOrderToHistory(productName, productPrice, quantity = 1) {
+      const order = {
+        name: productName,
+        price: productPrice,
+        quantity: quantity,
+        date: new Date().toLocaleString()
+      };
+
+      let history = JSON.parse(localStorage.getItem('orderHistory')) || [];
+      history.push(order);
+      localStorage.setItem('orderHistory', JSON.stringify(history));
+
+      displayOrderHistory();
+    }
+
+    // Display order history
+    function displayOrderHistory() {
+      const orderList = document.getElementById('orderList');
+      orderList.innerHTML = '';
+      const history = JSON.parse(localStorage.getItem('orderHistory')) || [];
+
+      if (history.length === 0) {
+        orderList.innerHTML = '<li>No orders yet.</li>';
+        return;
+      }
+
+      history.forEach(order => {
+        const li = document.createElement('li');
+        li.textContent = `${order.quantity} × ${order.name} — Rs ${order.price} | Ordered on ${order.date}`;
+        orderList.appendChild(li);
+      });
+    }
+
+    // Clear history
+    function clearOrderHistory() {
+      if (confirm('Are you sure you want to clear your order history?')) {
+        localStorage.removeItem('orderHistory');
+        displayOrderHistory();
+      }
+    }
+
+    // Load history on page load
+    document.addEventListener('DOMContentLoaded', displayOrderHistory);
+
+    // Example: Call this when a user places an order
+    // Uncomment the below line to simulate an order:
+    // saveOrderToHistory('Areca Palm', 399, 1);
+  </script>
+
+</body>
+</html>

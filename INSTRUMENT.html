@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nursery Tools - Leafylane</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #2e7d32;
+            --secondary-color: #4CAF50;
+            --light-bg: #f0f8f2;
+        }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background-color: var(--light-bg);
+        }
+
+        .page-header {
+            color: var(--primary-color);
+            margin: 2rem 0;
+            font-weight: 600;
+        }
+
+        .tool-card {
+            background: white;
+            border-radius: 12px;
+            transition: transform 0.3s ease;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .tool-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        }
+
+        .tool-image {
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px 8px 0 0;
+        }
+
+        .card-body {
+            padding: 1.5rem;
+        }
+
+        .tool-name {
+            font-weight: 600;
+            color: #2d2d2d;
+            margin-bottom: 0.5rem;
+        }
+
+        .price {
+            color: var(--primary-color);
+            font-weight: 700;
+            margin: 0.5rem 0;
+        }
+
+        .btn-custom {
+            background-color: var(--primary-color);
+            color: white;
+            width: 100%;
+            margin: 0.25rem 0;
+        }
+
+        .btn-custom:hover {
+            background-color: var(--secondary-color);
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .tool-image {
+                height: 150px;
+            }
+            
+            .page-header {
+                font-size: 1.75rem;
+            }
+            
+            .tool-name {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container py-5">
+        <h1 class="page-header text-center">Essential Nursery Tools</h1>
+
+        <div class="row g-4">
+            <!-- Gardening Gloves -->
+            <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                <div class="tool-card shadow-sm">
+                    <img src="/photos/Gardening Gloves.webp" class="tool-image w-100" alt="Gardening Gloves">
+                    <div class="card-body">
+                        <h3 class="tool-name">Gardening Gloves</h3>
+                        <p class="price">₹800.00</p>
+                        <div class="d-grid gap-2">
+                            <button class="btn btn-custom" onclick="addToCart('Gardening Gloves')">
+                                Add to Cart
+                            </button>
+                            <button class="btn btn-outline-success">
+                                Buy Now
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hand Trowel -->
+            <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                <div class="tool-card shadow-sm">
+                    <img src="/photos/Hand Trowel.jpg" class="tool-image w-100" alt="Hand Trowel">
+                    <div class="card-body">
+                        <h3 class="tool-name">Hand Trowel</h3>
+                        <p class="price">₹800.00</p>
+                        <div class="d-grid gap-2">
+                            <button class="btn btn-custom" onclick="addToCart('Hand Trowel')">
+                                Add to Cart
+                            </button>
+                            <button class="btn btn-outline-success">
+                                Buy Now
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pruning Shears -->
+            <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                <div class="tool-card shadow-sm">
+                    <img src="/photos/pruning shears1.jpg" class="tool-image w-100" alt="Pruning Shears">
+                    <div class="card-body">
+                        <h3 class="tool-name">Pruning Shears</h3>
+                        <p class="price">₹800.00</p>
+                        <div class="d-grid gap-2">
+                            <button class="btn btn-custom" onclick="addToCart('Pruning Shears')">
+                                Add to Cart
+                            </button>
+                            <button class="btn btn-outline-success">
+                                Buy Now
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Watering Can -->
+            <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                <div class="tool-card shadow-sm">
+                    <img src="/photos/water can.jpg" class="tool-image w-100" alt="Watering Can">
+                    <div class="card-body">
+                        <h3 class="tool-name">Watering Can</h3>
+                        <p class="price">₹800.00</p>
+                        <div class="d-grid gap-2">
+                            <button class="btn btn-custom" onclick="addToCart('Watering Can')">
+                                Add to Cart
+                            </button>
+                            <button class="btn btn-outline-success">
+                                Buy Now
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Add remaining tools following the same structure -->
+
+        </div>
+    </div>
+
+    <!-- Bootstrap 5 JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function addToCart(itemName) {
+            // Add your cart logic here
+            console.log(`Added ${itemName} to cart`);
+            alert(`${itemName} added to cart!`);
+        }
+    </script>
+</body>
+</html>

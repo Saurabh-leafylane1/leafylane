@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LeafyLane - Your Plant Paradise</title>
+  <style>
+    /* Global Styles */
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      background-color: #196744;
+      color: #333;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+    body.dark-mode {
+      background-color: #090807;
+      color: #fff;
+    }
+    header {
+      background: linear-gradient(90deg, #4CAF50, #81C784);
+      padding: 20px;
+      text-align: center;
+      color: white;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    h1 {
+      margin: 0;
+      font-size: 2.5rem;
+    }
+    .hero-section {
+      padding: 60px 20px;
+      text-align: center;
+      background: url('https://images.unsplash.com/photo-1587049352824-b5525f9cfa05') no-repeat center center/cover;
+      color: white;
+      animation: fadeIn 2s ease-in-out;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    /* Filter & Dark Mode Button */
+    .filter-container {
+      display: flex;
+      justify-content: space-between;
+      padding: 20px;
+    }
+    .category-filter, .dark-mode-toggle {
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      background-color: #4CAF50;
+      color: white;
+      font-size: 1rem;
+      border: none;
+    }
+    .dark-mode-toggle {
+      background-color: #333;
+    }
+    .category-filter:hover, .dark-mode-toggle:hover {
+      background-color: #388e3c;
+    }
+
+    /* Plant Cards */
+    .card-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      padding: 20px;
+    }
+    .card {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      overflow: hidden;
+      transition: transform 0.3s, box-shadow 0.3s;
+      position: relative;
+    }
+    .card.dark-mode {
+      background: #333;
+      color: #fff;
+    }
+    .card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    }
+    .card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+    .card-content {
+      padding: 15px;
+      text-align: center;
+    }
+    .card-content h3 {
+      margin: 10px 0 5px;
+      font-size: 1.3rem;
+      color: #2e7d32;
+    }
+    .rating {
+      color: #FFD700;
+      margin: 5px 0;
+    }
+    .reviews {
+      font-size: 0.9rem;
+      color: #555;
+      margin-bottom: 10px;
+    }
+    .price {
+      color: #4CAF50;
+      font-weight: bold;
+      margin: 10px 0;
+    }
+    .btn {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+    .btn:hover {
+      background-color: #388e3c;
+    }
+    footer {
+      background-color: #333;
+      color: white;
+      text-align: center;
+      padding: 20px 0;
+      margin-top: 40px;
+    }
+    .fixed-nav {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      background: white;
+      box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+      display: flex;
+      justify-content: space-around;
+      padding: 10px 0;
+    }
+    .fixed-nav a {
+      text-decoration: none;
+      color: #4CAF50;
+      font-size: 1.2rem;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>LeafyLane 🌱</h1>
+  <p>Your One-Stop Plant Destination</p>
+</header>
+
+<section class="filter-container">
+  <button class="category-filter" onclick="filterByCategory('indoor')">Indoor Plants</button>
+  <button class="category-filter" onclick="filterByCategory('outdoor')">Outdoor Plants</button>
+  <button class="category-filter" onclick="filterByCategory('succulents')">Succulents</button>
+  <button class="dark-mode-toggle" onclick="toggleDarkMode()">Toggle Dark Mode</button>
+</section>
+
+<section class="hero-section">
+  <h2>Welcome to LeafyLane</h2>
+  <p>Enhance your living space with our handpicked plants!</p>
+</section>
+
+<section class="card-container" id="card-container">
+  <div class="card" data-category="indoor">
+    <img src="https://tse3.mm.bing.net/th/id/OIP.CeswSvl85TMznMi-yFAPKgHaHa?rs=1&pid=ImgDetMain" alt="Snake Plant">
+    <div class="card-content">
+      <h3>Snake Plant</h3>
+      <div class="rating">★★★★☆</div>
+      <div class="reviews">200 reviews</div>
+      <div class="price">Rs 499</div>
+      <button class="btn">Buy Now</button>
+    </div>
+  </div>
+
+  <div class="card" data-category="outdoor">
+    <img src="https://tse3.mm.bing.net/th/id/OIP.aouZFhMZxyCd9C3ATj7_WQHaHa?rs=1&pid=ImgDetMain" alt="Peace Lily">
+    <div class="card-content">
+      <h3>Peace Lily</h3>
+      <div class="rating">★★★★★</div>
+      <div class="reviews">350 reviews</div>
+      <div class="price">Rs 699</div>
+      <button class="btn">Buy Now
+        
+      </button>
+    </div>
+  </div>
+
+  <div class="card" data-category="succulents">
+    <img src="https://tse3.mm.bing.net/th/id/OIP.H6aALWNDdtfPwVt4z3yGmAHaEK?rs=1&pid=ImgDetMain" alt="Money Plant">
+    <div class="card-content">
+      <h3>Money Plant</h3>
+      <div class="rating">★★★★☆</div>
+      <div class="reviews">150 reviews</div>
+      <div class="price">Rs 299</div>
+      <button class="btn">Buy Now</button>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2025 LeafyLane. All Rights Reserved.</p>
+</footer>
+
+<nav class="fixed-nav">
+  <a href="#">🏠 Home</a>
+  <a href="#">🔎 Search</a>
+  <a href="#">🛒 Cart</a>
+  <a href="#">📜 History</a>
+</nav>
+
+<script>
+  // Dark Mode Toggle
+  function toggleDarkMode() {
+    document.body.classList.toggle('dark-mode');
+    document.querySelectorAll('.card').forEach(card => card.classList.toggle('dark-mode'));
+  }
+
+  // Filter by Category
+  function filterByCategory(category) {
+    const cards = document.querySelectorAll('.card');
+    cards.forEach(card => {
+      if (category === 'all' || card.getAttribute('data-category') === category) {
+        card.style.display = 'block';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+  }
+
+  // Button Actions
+  document.querySelectorAll('.btn').forEach(button => {
+    button.addEventListener('click', () => {
+      alert('Order Confirmed! 🌿 Your plant will be delivered soon.');
+    });
+  });
+</script>
+
+</body>
+</html>
+
+
